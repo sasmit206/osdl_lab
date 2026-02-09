@@ -1,15 +1,16 @@
 import java.io.*;
-public class file_writer {
+public class file_byte_stream{
     public static void main(String[] args) {
-        try(FileWriter fw=new FileWriter("output.txt");FileReader fr=new FileReader("input.txt"); ){
-            System.out.println("Copying contents...\n");
-            int ch;
-            while((ch=fr.read())!=-1){
-                fw.write(ch);
-            } 
-        }
-        catch(Exception e){
-            System.out.println("File not opened ! xD");
+        try {
+            FileInputStream fis=new FileInputStream("input.txt");
+            FileOutputStream fos=new FileOutputStream("output.txt");
+            int data;
+            while((data=fis.read())!=-1){   
+                fos.write(data);
+            }
+
+        } catch (Exception e) {
+            System.out.println("File Opening Not Possible");
         }
     }
 }
